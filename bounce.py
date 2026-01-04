@@ -4,6 +4,7 @@ import math
 import random
 gravity = 0.981
 
+RADIUS = 2
 # gets resultant force magnitude given horizontal and vertical force
 def total_force(x,y):
     return math.sqrt(x**2 + y**2)
@@ -44,12 +45,12 @@ while running:
             running = False
     screen.fill("purple")
     for current_pos, current_speed in zip(positions, speeds):
-        bounce(current_pos, screen, 40, current_speed)
+        bounce(current_pos, screen, RADIUS, current_speed)
         if current_pos.y > 100:
             current_speed.y += gravity
         # fill the screen with a color to wipe away anything from last frame
 
-        pygame.draw.circle(screen, "red", current_pos, 4)
+        pygame.draw.circle(screen, "red", current_pos, RADIUS)
 
         current_pos.x += current_speed.x
         current_pos.y += current_speed.y
